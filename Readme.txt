@@ -1,0 +1,1 @@
+App social para jogadores e narradores de rpg encontrarem grupos, combinarem e discutirem jogos e sistemas de rpg. O app ainda tem um sistema de troca de arquivos entre os integrantes do grupo. Grupos podem ser tópicos de discussão ou grupos de mesa.

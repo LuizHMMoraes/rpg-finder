@@ -1,0 +1,60 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="row">
+        <h1 class="text-center">Edit RPG Group</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/rpgGroups/<%= rpgGroup._id %>?_method=PUT" method="POST" novalidate
+                class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" id="title" name="rpgGroup[title]"
+                        value="<%= rpgGroup.title %>" required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" id="location" name="rpgGroup[location]"
+                        value="<%= rpgGroup.location %>" required>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="rpgGroup[description]"
+                        <%=rpgGroup.description %> required></textarea>
+                    <div class="valid-feedback">Looks good!</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">RPG Group Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price label">$</span>
+                        <input type="text" class="form-control" id="price" placeholder="0,0" name="rpgGroup[price]"
+                            value="<%= rpgGroup.price %>" aria-label="price" aria-describedby="price label" required>
+                        <div class="valid-feedback">Looks good!</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Add more Images</label>
+                    <input class="form-control" type="file" id="image" name="image" multiple>
+                </div>
+                <div class="mb-3">
+                    <% rpgGroup.images.forEach(function (img, i) { %>
+
+                        <img src="<%= img.thumbnail %>" class="img-thumbnail" alt="">
+                        <div class="form-check-inline">
+                            <input type="checkbox" id="img-<%= i %>" name="deleteImages[]" value="<%= img.filename %>">
+                        </div>
+                        <label for="img-<%= i %>"></label>
+
+                        <% }) %>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-info">Update RPG Group</button>
+                </div>
+            </form>
+
+            <footer>
+                <a href="/rpgGroups/<%= rpgGroup._id %>">Back to RPG Groups</a>
+            </footer>
+
+        </div>
+    </div>
