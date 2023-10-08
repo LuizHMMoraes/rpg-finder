@@ -24,7 +24,7 @@ module.exports.createRpgGroup = async (req, res, next) => {
     rpgGroup.author = req.user._id;
     await rpgGroup.save();
     console.log(rpgGroup);
-    req.flash('success', 'Succefully made a new RPG group!');
+    req.flash('success', 'Succefully made a new RPG Group!');
     res.redirect(`/rpgGroups/${rpgGroup._id}`);
 }
 
@@ -45,7 +45,7 @@ module.exports.showRpgGroup = async (req, res) => {
 module.exports.renderEditRpgGroup = async (req, res) => {
     const rpgGroup = await RpgGroup.findById(req.params.id);
     if (!rpgGroup) {
-        req.flash('error', 'Cannot find that RPG group!');
+        req.flash('error', 'Cannot find that RPG Group!');
         return res.redirect('/rpgGroups');
     }
     res.render('rpgGroups/edit', { rpgGroup });
@@ -63,13 +63,13 @@ module.exports.updateRpgGroup = async (req, res) => {
         }
         await rpgGroup.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
     }
-    req.flash('success', 'Succefully updated RPG group!');
+    req.flash('success', 'Succefully updated RPG Group!');
     res.redirect(`/rpgGroups/${rpgGroup._id}`);
 }
 
 module.exports.deleteRpgGroup = async (req, res) => {
     const { id } = req.params;
     const rpgGroup = await RpgGroup.findByIdAndDelete(id);
-    req.flash('success', 'Succefully deleted RPG group!');
+    req.flash('success', 'Succefully deleted RPG Group!');
     res.redirect('/rpgGroups');
 }

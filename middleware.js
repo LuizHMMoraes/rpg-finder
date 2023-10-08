@@ -19,7 +19,7 @@ module.exports.storeReturnTo = (req, res, next) => {
     next();
 }
 
-module.exports.validateRpgGroupd = (req, res, next) => {
+module.exports.validateRpgGroup = (req, res, next) => {
 
     const { error } = rpgGroupSchema.validate(req.body);
     if (error) {

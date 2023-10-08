@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
     cloudinary,
     params: {
-        folder: 'RPG Finder',
+        folder: 'Rpg Finder',
         allowedFormats: ['jpeg', 'png', 'jpg']
     }
 });

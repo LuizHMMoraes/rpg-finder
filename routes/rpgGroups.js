@@ -15,7 +15,7 @@ router.get('/new', isLoggedIn, rpgGroups.renderNewForm);
 
 router.route('/:id')
     .get(catchAsync(rpgGroups.showRpgGroup))
-    .put(isLoggedIn, isAuthor, upload.array('image'), validateRpgGroup, catchAsync(rpgGroups.updateRpgGroupd))
+    .put(isLoggedIn, isAuthor, upload.array('image'), validateRpgGroup, catchAsync(rpgGroups.updateRpgGroup))
     .delete(isLoggedIn, isAuthor, catchAsync(rpgGroups.deleteRpgGroup));
 
 router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(rpgGroups.renderEditRpgGroup));

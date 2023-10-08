@@ -43,8 +43,8 @@ const RpgGroupSchema = new Schema({
 }, opts);
 
 RpgGroupSchema.virtual('properties.popupMarkup').get(function () {
-    return `<strong><a href="/rpgGroup/${this._id}">${this.title}</a></strong>`+
-    `<p>${this.description.substring(0, 100)}...</p>`;
+    return `<strong><a href="/rpgGroups/${this._id}">${this.title}</a></strong>` +
+        `<p>${this.description.substring(0, 100)}...</p>`;
 });
 
 RpgGroupSchema.post('findOneAndDelete', async function (doc) {

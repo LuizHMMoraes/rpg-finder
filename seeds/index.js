@@ -4,7 +4,7 @@ const RpgGroup = require('../models/rpgGroup');
 const cities = require('./cities')
 const { places, descriptors } = require('./seedHelpers')
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp', {
+mongoose.connect('mongodb://localhost:27017/rpg-finder', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -22,7 +22,7 @@ const seedDB = async () => {
         const random1000 = Math.floor(Math.random() * 1000);
         const price = Math.floor(Math.random() * 20) + 10;
 
-        const group = new RpgGroup({
+        const camp = new RpgGroup({
             author: '64a47031b294cdaf028d0b32',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
@@ -37,16 +37,16 @@ const seedDB = async () => {
             },
             images: [
                 {
-                    url: 'https://res.cloudinary.com/djxomm4es/image/upload/v1690486784/Yelp%20Camp/y4pvj5rvsfkapusqux6c.jpg',
-                    filename: 'Yelp Camp/y4pvj5rvsfkapusqux6c'
+                    // url: 'https://res.cloudinary.com/djxomm4es/image/upload/v1690486784/Yelp%20Camp/y4pvj5rvsfkapusqux6c.jpg',
+                    filename: 'Rpg Finder/y4pvj5rvsfkapusqux6c'
                 },
                 {
-                    url: 'https://res.cloudinary.com/djxomm4es/image/upload/v1690486784/Yelp%20Camp/ioykjofiaq62mgzaenvz.jpg',
-                    filename: 'Yelp Camp/ioykjofiaq62mgzaenvz'
+                    // url: 'https://res.cloudinary.com/djxomm4es/image/upload/v1690486784/Yelp%20Camp/ioykjofiaq62mgzaenvz.jpg',
+                    filename: 'Rpg Finder/ioykjofiaq62mgzaenvz'
                 }
             ]
         });
-        await group.save();
+        await camp.save();
     }
 }
 

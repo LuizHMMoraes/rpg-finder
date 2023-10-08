@@ -22,7 +22,8 @@ const userRoutes = require('./routes/users');
 const rpgGroupsRoutes = require('./routes/rpgGroups');
 const reviewsRoutes = require('./routes/reviews');
 
-const dbUrl = process.env.DB_URL ||'mongodb://localhost:27017/rpg-finder';
+// const dbUrl = process.env.DB_URL ||'mongodb://localhost:27017/rpg-finder';
+const dbUrl = 'mongodb://localhost:27017/rpg-finder'
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -38,7 +39,7 @@ const app = express();
 
 app.engine('ejs', ejsMate)
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'views')) 
 
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'));
@@ -118,8 +119,8 @@ app.use(
                 "data:",
                 "https://res.cloudinary.com/djxomm4es/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
                 "https://images.unsplash.com/",
-                'https://res.cloudinary.com/djxomm4es/image/upload/v1690486784/Yelp%20Camp/y4pvj5rvsfkapusqux6c.jpg',
-                'https://res.cloudinary.com/djxomm4es/image/upload/v1690486784/Yelp%20Camp/ioykjofiaq62mgzaenvz.jpg'
+                // 'https://res.cloudinary.com/djxomm4es/image/upload/v1690486784/Yelp%20Camp/y4pvj5rvsfkapusqux6c.jpg',
+                // 'https://res.cloudinary.com/djxomm4es/image/upload/v1690486784/Yelp%20Camp/ioykjofiaq62mgzaenvz.jpg'
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
@@ -158,7 +159,8 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 })
 
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
+const port = 3000
 app.listen(port, () => {
     console.log(`Serving on port ${port}`)
 });
