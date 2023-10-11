@@ -22,8 +22,8 @@ const userRoutes = require('./routes/users');
 const rpgGroupsRoutes = require('./routes/rpgGroups');
 const reviewsRoutes = require('./routes/reviews');
 
-// const dbUrl = process.env.DB_URL ||'mongodb://localhost:27017/rpg-finder';
-const dbUrl = 'mongodb://localhost:27017/rpg-finder'
+const dbUrl = process.env.DB_URL ||'mongodb://localhost:27017/rpg-finder';
+// const dbUrl = 'mongodb://localhost:27017/rpg-finder'
 mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -159,8 +159,8 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 })
 
-// const port = process.env.PORT || 3000;
-const port = 3000
+const port = process.env.PORT || 3000;
+// const port = 3000
 app.listen(port, () => {
     console.log(`Serving on port ${port}`)
 });
